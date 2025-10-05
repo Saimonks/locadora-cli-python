@@ -2,117 +2,47 @@
 
 <h2>📌 Sobre o Projeto</h2>
 <p>
-  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> (utilizando <code>datetime</code> e funcionalidades built-in) e operado via Interface de Linha de Comando (CLI).<br>
-  O foco principal é a <strong>segurança de dados</strong> e a <strong>validação robusta</strong> em todo o ciclo de locação.
+  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> (utilizando <code>datetime</code> e funcionalidades built-in) e operado via Interface de Linha de Comando (CLI). 
+  O foco é a <strong>segurança de dados</strong> e <strong>validações robustas</strong> em todo o ciclo de locação.
 </p>
 
-<h2>🚀 Como Iniciar o Sistema</h2>
+<h2>✨ Funcionalidades Detalhadas</h2>
+<p>O sistema é modularizado em 4 áreas principais, cada uma com seu próprio submenu de operações:</p>
 
-<h3>✔️ Pré-requisitos</h3>
+<h3>1. 🎬 Catálogo de Filmes (Módulo Principal)</h3>
 <ul>
-  <li>Git instalado.</li>
-  <li>Python 3 ou superior.</li>
+  <li><strong>Cadastrar Filme:</strong> Adiciona um novo filme. Garante código único e valores monetários/estoque positivos (aceita "," ou "." como decimal).</li>
+  <li><strong>Listar Filmes:</strong> Exibe todo o acervo em ordem alfabética por título.</li>
+  <li><strong>Atualizar Estoque:</strong> Permite adicionar ou remover unidades. Bloqueia operações que resultem em estoque negativo.</li>
+  <li><strong>Remover Filme:</strong> Exclui um filme do catálogo.</li>
 </ul>
 
-<h3>▶️ Execução</h3>
-<ol>
-  <li>Clone o repositório para sua máquina.</li>
-  <li>No terminal, navegue até a pasta do projeto.</li>
-  <li>Execute o sistema com o comando:
-    <pre><code>python locadora.py</code></pre>
-  </li>
-</ol>
+<h3>2. 👤 Clientes (Módulo Principal)</h3>
+<ul>
+  <li><strong>Cadastrar Cliente:</strong> Registra cliente (CPF, Nome, Telefone). CPF deve ser único e conter 11 dígitos numéricos.</li>
+  <li><strong>Listar Clientes:</strong> Exibe todos os clientes cadastrados, organizados por ordem alfabética do nome.</li>
+  <li><strong>Remover Cliente:</strong> Exclui um cliente do cadastro. ⚠️ Bloqueado se houver locação com status ATIVA.</li>
+</ul>
 
-<h2>✨ Funcionalidades Detalhadas</h2>
+<h3>3. 🛒 Locações (Módulo Principal)</h3>
+<p>Controla o ciclo de aluguel, registrando a data e hora exata da transação:</p>
+<ul>
+  <li><strong>Iniciar/Zerar Locação:</strong> Cria um carrinho de locação associado ao CPF.</li>
+  <li><strong>Adicionar Filme ao Carrinho:</strong> Adiciona itens ao carrinho, verifica disponibilidade e consolida itens duplicados.</li>
+  <li><strong>Remover Filme do Carrinho:</strong> Permite retirar itens antes da finalização.</li>
+  <li><strong>Ver Carrinho e Subtotal:</strong> Mostra todos os itens no carrinho e calcula o subtotal.</li>
+  <li><strong>Finalizar Locação:</strong> Processa pagamento, aplica desconto, debita estoque (<code>qtd_disponivel -= 1</code>) e registra a transação com status ATIVA.</li>
+  <li><strong>Devolver Filmes:</strong> Reverte a locação, aumenta estoque (<code>qtd_disponivel += 1</code>) e atualiza o status para DEVOLVIDA.</li>
+</ul>
 
-<h3>1. 🎬 Catálogo de Filmes</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Funcionalidade</th>
-      <th>Destaque de Validação</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cadastrar</td>
-      <td>Garante que o código é único e que os valores são numéricos (aceita "," ou "." como decimal).</td>
-    </tr>
-    <tr>
-      <td>Atualizar Estoque</td>
-      <td>Bloqueia a remoção de unidades que resultem em estoque negativo.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>2. 👤 Clientes</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Funcionalidade</th>
-      <th>Destaque de Segurança</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cadastrar</td>
-      <td>CPF deve ser único e ter exatamente 11 dígitos numéricos.</td>
-    </tr>
-    <tr>
-      <td>Remover Cliente</td>
-      <td>⛔ BLOQUEIO: Não permite remoção se o cliente possuir locação com status ATIVA.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>3. 🛒 Locações (Ciclo Completo)</h3>
-<p>Este módulo registra o <strong>tempo exato da transação</strong> e gerencia o estoque.</p>
-<table>
-  <thead>
-    <tr>
-      <th>Funcionalidade</th>
-      <th>Detalhe</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Finalizar Locação</td>
-      <td>Usa o módulo <code>datetime</code> para registrar data/hora exata. Status definido como ATIVA.</td>
-    </tr>
-    <tr>
-      <td>Devolver Filmes</td>
-      <td>Encontra a locação ativa, aumenta o estoque (<code>qtd_disponivel += 1</code>) e atualiza o status para DEVOLVIDA.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>4. 📊 Relatórios (Análise Gerencial)</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Relatório</th>
-      <th>Detalhe</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Listar Todo Histórico</td>
-      <td>Permite visualizar todas as transações, incluindo datetime e status (ATIVA/DEVOLVIDA).</td>
-    </tr>
-    <tr>
-      <td>Total Faturado & Ticket Médio</td>
-      <td>Cálculos financeiros essenciais.</td>
-    </tr>
-    <tr>
-      <td>Filme Mais Alugado</td>
-      <td>Contagem total de cada título no histórico.</td>
-    </tr>
-    <tr>
-      <td>Estoque Baixo</td>
-      <td>Lista filmes abaixo de um limite definido pelo usuário.</td>
-    </tr>
-  </tbody>
-</table>
+<h3>4. 📊 Relatórios (Módulo Principal)</h3>
+<ul>
+  <li><strong>Total Faturado:</strong> Soma total de todos os valores pagos.</li>
+  <li><strong>Ticket Médio por Locação:</strong> Média de valor pago por transação.</li>
+  <li><strong>Filme Mais Alugado:</strong> Título com maior contagem no histórico.</li>
+  <li><strong>Estoque Baixo:</strong> Filmes com quantidade disponível abaixo ou igual ao limite definido pelo usuário.</li>
+  <li><strong>Listar Todo Histórico:</strong> Exibe todas as transações finalizadas, mostrando datetime e status.</li>
+</ul>
 
 <h2>🛠️ Estrutura de Dados Globais</h2>
 <table>
@@ -125,17 +55,21 @@
   <tbody>
     <tr>
       <td><code>historico_locacoes</code></td>
-      <td>Armazena transações com o campo status (ATIVA/DEVOLVIDA).</td>
+      <td>Armazena transações com campo status (ATIVA/DEVOLVIDA).</td>
+    </tr>
+    <tr>
+      <td><code>carrinhos_ativos</code></td>
+      <td>Armazena os pedidos em andamento.</td>
     </tr>
     <tr>
       <td><code>proximo_id_locacao</code></td>
-      <td>Gerador sequencial de IDs únicos.</td>
+      <td>Gerador sequencial de IDs únicos para locações.</td>
     </tr>
   </tbody>
 </table>
 
 <h2>✒️ Autor</h2>
 <p>
-  <strong>Saimonks</strong><br>
-  Projeto de desenvolvimento para <em>Paradigmas de Linguagens de Programação em Python / Estacio</em>
+  <strong>Saimon Ruan</strong><br>
+  Projeto de desenvolvimento em Python.
 </p>
