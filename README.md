@@ -2,7 +2,7 @@
 
 <h2>📌 Sobre o Projeto</h2>
 <p>
-  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> (utilizando <code>datetime</code> e funcionalidades built-in) e operado via Interface de Linha de Comando (CLI). 
+  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> e operado via Interface de Linha de Comando (CLI). 
   O foco é a <strong>segurança de dados</strong> e <strong>validações robustas</strong> em todo o ciclo de locação.
 </p>
 
