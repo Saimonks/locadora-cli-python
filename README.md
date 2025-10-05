@@ -2,7 +2,7 @@
 
 <h2>📌 Sobre o Projeto</h2>
 <p>
-  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> e operado via Interface de Linha de Comando (CLI). 
+  Este é um sistema completo para gerenciamento de uma locadora de filmes, desenvolvido em <strong>Python</strong> (utilizando <code>datetime</code> e funcionalidades built-in) e operado via Interface de Linha de Comando (CLI). 
   O foco é a <strong>segurança de dados</strong> e <strong>validações robustas</strong> em todo o ciclo de locação.
 </p>
 
@@ -54,12 +54,20 @@
   </thead>
   <tbody>
     <tr>
+      <td><code>catalogo_filmes</code></td>
+      <td>Armazena todos os filmes cadastrados, incluindo título, código, preço da diária, estoque e demais detalhes.</td>
+    </tr>
+    <tr>
+      <td><code>clientes</code></td>
+      <td>Armazena todos os clientes cadastrados, incluindo CPF, nome, telefone e histórico de locações.</td>
+    </tr>
+    <tr>
       <td><code>historico_locacoes</code></td>
-      <td>Armazena transações com campo status (ATIVA/DEVOLVIDA).</td>
+      <td>Armazena todas as transações de locação, com campo status (ATIVA/DEVOLVIDA) e datetime.</td>
     </tr>
     <tr>
       <td><code>carrinhos_ativos</code></td>
-      <td>Armazena os pedidos em andamento.</td>
+      <td>Armazena os pedidos de locação em andamento.</td>
     </tr>
     <tr>
       <td><code>proximo_id_locacao</code></td>
