@@ -42,10 +42,6 @@
       <td>Atualizar Estoque</td>
       <td>Bloqueia a remoção de unidades que resultem em estoque negativo.</td>
     </tr>
-    <tr>
-      <td>Exportar para as Planilhas</td>
-      <td>-</td>
-    </tr>
   </tbody>
 </table>
 
@@ -65,10 +61,6 @@
     <tr>
       <td>Remover Cliente</td>
       <td>⛔ BLOQUEIO: Não permite remoção se o cliente possuir locação com status ATIVA.</td>
-    </tr>
-    <tr>
-      <td>Exportar para as Planilhas</td>
-      <td>-</td>
     </tr>
   </tbody>
 </table>
@@ -90,10 +82,6 @@
     <tr>
       <td>Devolver Filmes</td>
       <td>Encontra a locação ativa, aumenta o estoque (<code>qtd_disponivel += 1</code>) e atualiza o status para DEVOLVIDA.</td>
-    </tr>
-    <tr>
-      <td>Exportar para as Planilhas</td>
-      <td>-</td>
     </tr>
   </tbody>
 </table>
@@ -123,10 +111,6 @@
       <td>Estoque Baixo</td>
       <td>Lista filmes abaixo de um limite definido pelo usuário.</td>
     </tr>
-    <tr>
-      <td>Exportar para as Planilhas</td>
-      <td>-</td>
-    </tr>
   </tbody>
 </table>
 
@@ -147,15 +131,11 @@
       <td><code>proximo_id_locacao</code></td>
       <td>Gerador sequencial de IDs únicos.</td>
     </tr>
-    <tr>
-      <td>Exportar para as Planilhas</td>
-      <td>-</td>
-    </tr>
   </tbody>
 </table>
 
 <h2>✒️ Autor</h2>
 <p>
   <strong>Saimonks</strong><br>
-  Projeto de desenvolvimento para <em>[Nome da Disciplina/Faculdade]</em>
+  Projeto de desenvolvimento para <em>Paradigmas de Linguagens de Programação em Python / Estacio</em>
 </p>
