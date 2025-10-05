@@ -1,3 +1,5 @@
+import datetime 
+
 # ARMAZENAMENTO
 
 proximo_id_locacao = 1
@@ -250,7 +252,9 @@ def listar_clientes():
         return
     print("=== LISTA DE CLIENTES ===")
 
-    for cliente in clientes:
+    clientes_ordenados = sorted(clientes, key=lambda x: x['nome'])
+
+    for cliente in clientes_ordenados:
         print(
             f"{cliente['nome']} | "
             f"{cliente['cpf']} | "
@@ -536,10 +540,13 @@ def finalizar_locacao():
 
     if estoque_atualizado_com_sucesso:
 
+        data_atual = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") 
+
         nova_locacao_historico = {
             'id_locacao': proximo_id_locacao,
             'cpf_cliente': cpf_busca,
             'nome_cliente': busca_cliente_por_cpf(cpf_busca)['nome'],
+            'data_locacao': data_atual,
             'total_bruto': subtotal,
             'desconto_aplicado': desconto_valor,
             'total_final': total_final,
@@ -618,7 +625,7 @@ def relatorio_total_faturado():
     total_faturado = sum(locacao['total_final'] for locacao in historico_locacoes)
 
     print("=== RELATORIO: TOTAL FATURADO ===")
-    print(f"P faturamento total é: R${total_faturado:.2f}")
+    print(f"O faturamento total é: R${total_faturado:.2f}")
 
 def relatorio_ticket_medio():
     if not historico_locacoes:
@@ -686,9 +693,9 @@ def relatorio_estoque_baixo():
         print(f"Nenhum filme está com estoque abaixo ou igual a {limiar}.")
         return
 
-    print(f"\n--- FILMES COM ESTOQUE <= {limiar} ---")
-    print(f"{'CÓDIGO':<8} | {'TÍTULO':<30} | {'ESTOQUE ATUAL':<15}")
-    print("-" * 55)
+    print(f"=== FILMES COM ESTOQUE <= {limiar} ===")
+    print(f"{'CÓDIGO'} | {'TÍTULO'} | {'ESTOQUE ATUAL'}")
+    print("-------------------------------------------")
     
     for filme in filmes_baixo_estoque:
         print(
@@ -696,6 +703,26 @@ def relatorio_estoque_baixo():
             f"{filme['titulo']} |"
             f"{filme['qtd_disponivel']}"
         )
+
+def relatorio_listar_locacoes():
+    print("\n=== RELATÓRIO: HISTÓRICO DE LOCAÇÕES ===")
+    
+    if not historico_locacoes:
+        print("Não há locações registradas.")
+        return
+
+    for locacao in historico_locacoes:
+        id_loc = locacao['id_locacao']
+        cpf = locacao['cpf_cliente']
+        nome = locacao['nome_cliente']
+        data = locacao.get('data_locacao', 'N/D')
+        total = locacao['total_final']
+        status = locacao['status']
+        
+        print(
+            f"{id_loc} | {cpf} | {nome:} | {data} | R${total:.2f} | {status}"
+        )
+
 def relatorios():
 
     while True:
@@ -704,6 +731,7 @@ def relatorios():
         print("[2] Ticket Médio por Locação")
         print("[3] Filme Mais Alugado")
         print("[4] Estoque Baixo")
+        print("[5] Listar Todo Histórico")
         print("[0] Voltar ao Menu Principal")
         
         opcao = input("Escolha uma opção: ").strip()
@@ -715,7 +743,9 @@ def relatorios():
         elif opcao == '3':
             relatorio_filme_mais_alugados() 
         elif opcao == '4':
-            relatorio_estoque_baixo() 
+            relatorio_estoque_baixo()
+        elif opcao == '5':
+            relatorio_listar_locacoes()
         elif opcao == '0':
             break
         else:
