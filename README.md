@@ -44,38 +44,6 @@
   <li><strong>Listar Todo Histórico:</strong> Exibe todas as transações finalizadas, mostrando datetime e status.</li>
 </ul>
 
-<h2>🛠️ Estrutura de Dados Globais</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Variável</th>
-      <th>Função de Controle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>catalogo_filmes</code></td>
-      <td>Armazena todos os filmes cadastrados, incluindo título, código, preço da diária, estoque e demais detalhes.</td>
-    </tr>
-    <tr>
-      <td><code>clientes</code></td>
-      <td>Armazena todos os clientes cadastrados, incluindo CPF, nome, telefone e histórico de locações.</td>
-    </tr>
-    <tr>
-      <td><code>historico_locacoes</code></td>
-      <td>Armazena todas as transações de locação, com campo status (ATIVA/DEVOLVIDA) e datetime.</td>
-    </tr>
-    <tr>
-      <td><code>carrinhos_ativos</code></td>
-      <td>Armazena os pedidos de locação em andamento.</td>
-    </tr>
-    <tr>
-      <td><code>proximo_id_locacao</code></td>
-      <td>Gerador sequencial de IDs únicos para locações.</td>
-    </tr>
-  </tbody>
-</table>
-
 <h2>✒️ Autor</h2>
 <p>
   <strong>Saimon Ruan</strong><br>
